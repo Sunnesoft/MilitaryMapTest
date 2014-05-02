@@ -1,0 +1,13 @@
+>>>MongoDB config file
+logpath=C:\MongoDB2.6\log\mongo.log 
+dbpath=e:\projects\maprelation\backend\db\
+
+>>>Installing
+mongod.exe --config c:\MongoDB2.6\mongod.cfg --install
+
+>>>Repair MongoDB
+mongod.exe --config c:\MongoDB2.6\mongod.cfg --repair
+
+>>>Create MONGODB service
+c:\Windows\System32\sc create MongoDB binPath= "C:\MongoDB2.6\bin\mongod.exe --config C:\MongoDB2.6\mongod.cfg --service  --rest  --master" DisplayName= "Mongo DB" type= o
+wn start= auto
