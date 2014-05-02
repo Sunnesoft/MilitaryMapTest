@@ -1,0 +1,6 @@
+_deprecated/
+_examples/
+test/
+backend/db/
+backend/node_modules/
+frontend/deprecated/

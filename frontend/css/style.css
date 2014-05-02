@@ -1,0 +1,79 @@
+.map-slide-block{
+    height: -webkit-calc(100%);
+    width: -webkit-calc(100%);
+    overflow: auto;
+
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+@-webkit-keyframes mymove
+{
+0%   {margin-left: 100%;}
+100% {margin-left: 0px;}
+}
+
+.map-slide-block.show{	
+	-webkit-animation: mymove 0.25s linear 0s 1 normal;
+}
+
+.map-loading{
+	background: url('../img/loading2.gif') 0% 50% no-repeat;
+	background-size: auto 20px;
+	padding-left: 50px;
+}
+
+.map-delimiter-right{
+	border-right: 1px solid #ACACAC;
+}
+
+.map-delimiter-left{
+	border-left: 1px solid #ACACAC;
+}
+
+.map-row-400,.map-row-300,.map-row-200,.map-row-100{
+  position: relative;
+  min-width: 1px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  overflow-y:auto;
+}
+
+.map-row-400{
+	max-height: 400px;
+}
+
+.map-row-300{
+	max-height: 300px;
+}
+
+.map-row-200{
+	max-height: 200px;
+}
+
+.map-row-100{
+	max-height: 100px;
+}
+
+.map-offset-5{
+	margin-left: 5%;
+}
+
+.map-thumbnail-header{
+	height: 2em;
+	overflow: hidden;
+}
+
+.map-preview{
+	width: 300px;
+	height: auto;
+	cursor: pointer;
+
+	-webkit-transition: all 0.4s linear 0.2s;
+}
+
+.map-preview:hover{
+  width: 100%;
+  height: auto;
+}

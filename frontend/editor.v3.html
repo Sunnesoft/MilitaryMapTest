@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="MapConstructor">
+<head>
+	<meta charset="UTF-8">
+	<title>Map constructor</title>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script type="text/javascript" src="js/paper/paper-full.js"></script>
+	<script type="text/javascript" src="js/jquery/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="js/angular/angular.min.js"></script>
+
+	<script type="text/javascript" src="js/constructor/table.js"></script>
+
+	<script type="text/javascript" src="js/constructor/mgrid.js"></script>
+	<script type="text/javascript" src="js/constructor/mtext.js"></script>
+	<script type="text/javascript" src="js/constructor/mtarget.js"></script>
+	<script type="text/javascript" src="js/constructor/meditor.js"></script>
+	<script type="text/javascript" src="js/constructor/mroute.js"></script>
+	<script type="text/javascript" src="js/constructor/mtargets.js"></script>
+	<script type="text/javascript" src="js/constructor/mscene.js"></script>
+
+	<script type="text/javascript" src="js/angular/mmodule.js"></script>
+	<script type="text/javascript" src="js/angular/adminaction.js"></script>
+	<script type="text/javascript" src="js/angular/main.js"></script>
+</head>
+<body ng-controller="Main">
+	<div id="map-menu" class="clearfix">
+		<div class="nav navbar-inverse" role="navigation">
+		  	<h3 class="navbar-text" ng-class="{hidden:enabledLoadingIcon == 1}" >Редактор карт v4.0</h3>
+		  	<div class="navbar-text" ng-class="{show:enabledLoadingIcon == 1}"  style="display: none;">
+		  		<span class="map-loading">идет загрузка...</span>
+		  	</div>
+
+		  	<div class="map-offset-5" ng-if="action.isStageRender()">
+			  	<b class="navbar-text pull-left">Текущая карта:</b>
+			  	<p class="navbar-text pull-left">{{config.title.content.slice(0,50)}}</p>
+			  	
+			  	<div class="btn-group pull-left">
+					<button class="btn btn-default btn-sm navbar-btn" 
+							ng-click="openSaveWin()">Сохранить</button>
+					<button ng-click="action.removeElements()" class="btn btn-default btn-sm navbar-btn">Очистить карту</button>
+				</div>
+		  	</div>
+
+			<ul class="nav navbar-nav nav-pills pull-right">
+				<li ng-class="{active:activeMenuItem == 3}" ng-click="activeMenuItem = 3;"><a href="#user">Меню</a></li>
+				<li ng-class="{active:activeMenuItem == 0,hidden: !action.isStageRender()}" 
+					ng-click="activeMenuItem = 0;"><a href="#user">Настройки</a></li>
+				<li ng-class="{active:activeMenuItem == 4}" ng-click="activeMenuItem = 4;"><a href="#user">Помощь</a></li>
+			</ul>
+		</div>
+
+		<div ng-repeat="(key, v) in config.tpl.item"
+			ng-class="{show:activeMenuItem == v}" 
+			class="affix jumbotron map-slide-block" 
+			style="display: none;"
+			ng-include="config.tpl.url[key]">
+		</div>
+	</div>
+
+	<canvas id="map" style="background-color: black; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas>
+</body>
+</html>
