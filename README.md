@@ -1,4 +1,4 @@
 MilitaryMapTest
 ===============
 
-military map testing
+Комплекс для тестирования знаний по тактике.
